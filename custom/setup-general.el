@@ -1,3 +1,6 @@
+;;; package  --- general config settings
+;;; Commentary:
+;;; Code:
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
@@ -23,15 +26,6 @@
                                (setq-local compilation-read-command nil)
                                (call-interactively 'compile)))
 
-;; setup GDB
-(setq
- ;; use gdb-many-windows by default
- gdb-many-windows t
-
- ;; Non-nil means display source file containing the main routine at startup
- gdb-show-main t
- )
-
 ;; company
 (use-package company
   :init
@@ -43,8 +37,12 @@
 ;; Package: projejctile
 (use-package projectile
   :init
-  (projectile-global-mode)
-  (setq projectile-enable-caching t))
+  (projectile-mode)
+  (setq projectile-enable-caching t)
+  :bind
+  (("C-c p f f" . projectile-find-file)
+   ("C-c p f g" . helm-projectile-ag)
+   ("C-c p p" . helm-projectile-switch-project)))
 
 ;; Package zygospore
 (use-package zygospore
@@ -55,6 +53,15 @@
 
 ;; activate whitespace-mode to view all whitespace characters
 (global-set-key (kbd "C-c w") 'whitespace-mode)
+(global-set-key (kbd "C-c C-w") 'whitespace-cleanup)
 (windmove-default-keybindings)
 
+(use-package which-key
+  :ensure t)
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+;;; setup-general ends here
 (provide 'setup-general)

@@ -77,13 +77,12 @@
     (global-set-key (kbd "C-c r") 'helm-recentf)
     (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
     (global-set-key (kbd "C-c h o") 'helm-occur)
-    (global-set-key (kbd "C-c h o") 'helm-occur)
 
     (global-set-key (kbd "C-c h w") 'helm-wikipedia-suggest)
     (global-set-key (kbd "C-c h g") 'helm-google-suggest)
 
     (global-set-key (kbd "C-c h x") 'helm-register)
-    ;; (global-set-key (kbd "C-x r j") 'jump-to-register)
+    (global-set-key (kbd "C-x r j") 'jump-to-register)
 
     (define-key 'help-command (kbd "C-f") 'helm-apropos)
     (define-key 'help-command (kbd "r") 'helm-info-emacs)
@@ -94,7 +93,7 @@
               #'(lambda ()
                   (define-key eshell-mode-map (kbd "M-l")  'helm-eshell-history)))
 
-;;; Save current position to mark ring
+    ;; Save current position to mark ring
     (add-hook 'helm-goto-line-before-hook 'helm-save-current-pos-to-mark-ring)
 
     ;; show minibuffer history with Helm
@@ -138,5 +137,10 @@
       (helm-projectile-on)
       (setq projectile-completion-system 'helm)
       (setq projectile-indexing-method 'alien))))
+
+(use-package wgrep
+  :ensure t
+  :config (use-package wgrep-helm :ensure t))
+
 
 (provide 'setup-helm)

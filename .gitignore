@@ -1,0 +1,17 @@
+*.log
+auto-save-list/
+\#*\#
+*~
+elpa/
+elpy/
+eshell/
+projectile-bookmarks.eld
+projectile.cache
+recentf
+session.*
+ede-projects.el
+semanticdb/
+tramp
+transient/
+.cache/
+.dap-breakpoints
