@@ -1,22 +1,6 @@
-(use-package enh-ruby-mode
-  :ensure t
-  :mode "\\.rb\\'"
-  :mode "Rakefile\\'"
-  :mode "Gemfile\\'"
-  :interpreter "ruby"
-
-  :init
-  (setq ruby-indent-level 2
-        ruby-indent-tabs-mode nil)
-  (add-hook 'enh-ruby-mode 'superword-mode)
-
-  :bind
-  (([(meta down)] . ruby-forward-sexp)
-   ([(meta up)]   . ruby-backward-sexp)
-   (("C-c C-e"    . ruby-send-region))))
+(add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
 
 (use-package company
-  :no-require t
   :config
   (push 'company-robe company-backends))
 
@@ -32,19 +16,23 @@
 (use-package inf-ruby
   :ensure t
   :init
-  (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode))
+  ;; (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode))
+  (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
+  (add-hook 'ruby-mode-hook 'inf-ruby-console-auto))
 
 (use-package robe
   :ensure t
   :bind ("C-M-." . robe-jump)
 
   :init
-  (add-hook 'enh-ruby-mode-hook 'robe-mode)
+  ;; (add-hook 'enh-ruby-mode-hook 'robe-mode)
+  (add-hook 'ruby-mode-hook 'robe-mode)
+  (add-hook 'ruby-mode-hook 'robe-start))
 
   :config
   (defadvice inf-ruby-console-auto
       (before activate-rvm-for-robe activate)
-    (rvm-activate-corresponding-ruby)))
+    (rvm-activate-corresponding-ruby))
 
 (use-package rinari
   :init

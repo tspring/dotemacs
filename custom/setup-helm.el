@@ -66,7 +66,8 @@
           ;; helm-apropos-fuzzy-match t
           helm-buffer-skip-remote-checking t
           helm-locate-fuzzy-match t
-          helm-display-header-line nil)
+          helm-display-header-line nil
+          helm-move-to-line-cycle-in-source t)
 
     (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
 
@@ -117,6 +118,7 @@
 
       ;; From helm-swoop to helm-multi-swoop-all
       (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+      (define-key helm-swoop-map (kbd "C-e") 'helm-multi-swoop-edit)
 
       ;; Save buffer when helm-multi-swoop-edit complete
       (setq helm-multi-swoop-edit-save t)

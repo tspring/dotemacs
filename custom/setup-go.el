@@ -1,7 +1,7 @@
 (use-package go-mode
   :ensure t
   :init
-  ())
+  (require 'dap-go))
 
 (use-package lsp-mode
   :ensure t
@@ -10,6 +10,7 @@
   (setq lsp-keymap-prefix "C-c l")
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (go-mode . lsp)
+         (dap-go-setup)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
@@ -33,8 +34,8 @@
    ("C-c d o" . dap-step-out)
    ("C-c d n" . dap-next)))
 
-(require 'dap-go)
-(dap-go-setup)
+
+
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 (provide 'setup-go)

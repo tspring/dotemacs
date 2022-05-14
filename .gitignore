@@ -1,4 +1,5 @@
 *.log
+\.lsp-session*
 auto-save-list/
 \#*\#
 *~

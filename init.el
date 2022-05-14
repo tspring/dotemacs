@@ -71,8 +71,7 @@
  '(geiser-guile-binary "guile3.0")
  '(helm-completion-style 'emacs)
  '(package-selected-packages
-   '(dap-go helm-lsp lsp-ui dap-mode lsp-mode go-mode modus-themes svg-lib npm geiser-guile geiser nano-theme zenburn-theme kaolin-themes solarized-theme company-jedi elpy pdf-tools elpher tide flycheck tern xref-js2 js2-refactor js2-mode helm-ag wgrep-helm wgrep which-key projectile-rails projectile-rails-global-mode yari rinari bundler ruby-compilation inf-ruby web-mode auctex magit :magit zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))
- '(pyvenv-mode t))
+   '(rustic dap-go helm-lsp lsp-ui dap-mode lsp-mode go-mode modus-themes svg-lib npm geiser-guile geiser nano-theme zenburn-theme kaolin-themes solarized-theme company-jedi elpy pdf-tools elpher tide flycheck tern xref-js2 js2-refactor js2-mode helm-ag wgrep-helm wgrep which-key projectile-rails projectile-rails-global-mode yari rinari bundler ruby-compilation inf-ruby web-mode auctex magit :magit zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -4,6 +4,10 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "C-=") (lambda () (interactive) (text-scale-set 0)))
+
 (setq gc-cons-threshold 100000000)
 (setq inhibit-startup-message t)
 
@@ -30,7 +34,9 @@
 (use-package company
   :init
   (global-company-mode 1)
-  (delete 'company-semantic company-backends))
+  (delete 'company-semantic company-backends)
+  :bind
+  (("TAB" . 'company-complete)))
 ;; (define-key c-mode-map  [(control tab)] 'company-complete)
 ;; (define-key c++-mode-map  [(control tab)] 'company-complete)
 
