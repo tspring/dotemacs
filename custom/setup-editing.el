@@ -16,6 +16,8 @@
 (setq-default indent-tabs-mode nil)
 (delete-selection-mode)
 (global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "M-g c") 'avy-goto-char-2)
+(global-set-key (kbd "M-g w") 'avy-goto-word-1)
 
 ;; GROUP: Editing -> Killing
 (setq kill-ring-max 5000 ; increase kill-ring capacity
@@ -36,6 +38,15 @@
                                           newline
                                           newline-mark))
                             (whitespace-mode 1)))
+
+
+
+(use-package idle-highlight-mode
+  :init
+  (add-hook 'emacs-lisp-mode-hook 'idle-highlight-mode)
+  (add-hook 'python-mode-hook 'idle-highlight-mode)
+  (add-hook 'ruby-mode-hook 'idle-highlight-mode)
+  (add-hook 'js2-mode-hook 'idle-highlight-mode))
 
 ;; Package: volatile-highlights
 ;; GROUP: Editing -> Volatile Highlights
@@ -254,5 +265,7 @@ Position the cursor at it's beginning, according to the current mode."
 
 (global-set-key (kbd "M-o") 'prelude-smart-open-line)
 (global-set-key (kbd "M-o") 'open-line)
+
+
 
 (provide 'setup-editing)

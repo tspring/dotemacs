@@ -1,10 +1,8 @@
 (use-package go-mode
-  :ensure t
   :init
   (require 'dap-go))
 
 (use-package lsp-mode
-  :ensure t
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l")

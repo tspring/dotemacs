@@ -4,6 +4,13 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
+(load-theme 'modus-operandi t)
+
+(visual-line-mode t)
+(global-display-line-numbers-mode 1)
+(global-hl-line-mode 1)
+(blink-cursor-mode 0)
+
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key (kbd "C-=") (lambda () (interactive) (text-scale-set 0)))
@@ -30,17 +37,13 @@
                                (setq-local compilation-read-command nil)
                                (call-interactively 'compile)))
 
-;; company
 (use-package company
   :init
   (global-company-mode 1)
   (delete 'company-semantic company-backends)
   :bind
-  (("TAB" . 'company-complete)))
-;; (define-key c-mode-map  [(control tab)] 'company-complete)
-;; (define-key c++-mode-map  [(control tab)] 'company-complete)
+  (("C-<return>" . 'company-complete)))
 
-;; Package: projejctile
 (use-package projectile
   :init
   (projectile-mode)
@@ -68,6 +71,20 @@
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode))
+
+;; Enable richer annotations using the Marginalia package
+(use-package marginalia
+  ;; Either bind `marginalia-cycle` globally or only in the minibuffer
+  :bind (
+         :map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
+
+  ;; The :init configuration is always executed (Not lazy!)
+  :init
+
+  ;; Must be in the :init section of use-package such that the mode gets
+  ;; enabled right away. Note that this forces loading the package.
+  (marginalia-mode))
 
 ;;; setup-general ends here
 (provide 'setup-general)
